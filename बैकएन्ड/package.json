@@ -1,0 +1,19 @@
+{
+  "name": "bms2024backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N0Uchan/bms2024backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N0Uchan/bms2024backend/issues"
+  },
+  "homepage": "https://github.com/N0Uchan/bms2024backend#readme",
+  "description": ""
+}
