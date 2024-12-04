@@ -7,9 +7,8 @@ export const solidData = async ({lat,long}) => {
   try{
     const test = [long,lat]
       const data = await axios.get(
-        `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=-${test[0]}&lat=${test[1]}&property=bdod&property=cec&property=clay&property=nitrogen&property=phh2o&property=sand&depth=0-5cm&depth=0-30cm&depth=5-15cm&depth=15-30cm&value=mean`
+        `https://rest.isric.org/soilgrids/v2.0/properties/query?lon=${test[0]}&lat=${test[1]}&property=bdod&property=cec&property=cfvo&property=clay&property=nitrogen&property=ocd&property=ocs&property=phh2o&property=sand&property=silt&property=soc&property=wv0010&property=wv0033&property=wv1500&depth=0-5cm&depth=0-30cm&depth=5-15cm&depth=15-30cm&depth=30-60cm&depth=60-100cm&depth=100-200cm&value=Q0.5&value=Q0.05&value=Q0.95&value=mean&value=uncertainty`
       );
-      console.log(data.data.properties.layers.depths);
       const weather_data=await axios.get(
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=rain&hourly=temperature_2m,relative_humidity_2m,rain`
       )
@@ -21,6 +20,7 @@ export const solidData = async ({lat,long}) => {
     temp_data["temperature"]=weather_data.data.hourly.temperature_2m[0];
     temp_data["humidity"]=weather_data.data.hourly.relative_humidity_2m[0];
     temp_data["rain"]=weather_data.data.current.rain;
+    console.log(temp_data);
     return temp_data;
   }
   catch(err){
