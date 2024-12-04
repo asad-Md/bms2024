@@ -1,8 +1,7 @@
 import express from "express";
 import { configDotenv } from "dotenv";
 
-import cors from "cors"
-
+import { solidData } from "./utils/soiligGrids.js";
 
 
 configDotenv({path: "./.env"})
@@ -11,15 +10,14 @@ configDotenv({path: "./.env"})
 const PORT = 3000;
 const app = express()
 
-connectDatabase();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(cors({origin: "*"}))
+
 // This is required to handle urlencoded data
 app.use(express.json()); 
 
-app.get("/test", (req,res) => {
+app.get("/", (req,res) => {
     res.status(200)
+    console.log("wow");
     res.json({status: "works"})
 })
 
@@ -32,3 +30,11 @@ app.listen(PORT, (error) =>{
     }
 );
 
+
+app.get("/getsoildata",(req,res)=>{
+    const gettingsolidData=async()=>{
+        const data=await solidData();
+        res.json(data);
+    }
+    gettingsolidData();
+})
