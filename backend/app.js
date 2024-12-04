@@ -32,8 +32,9 @@ app.listen(PORT, (error) =>{
 
 
 app.get("/getsoildata",(req,res)=>{
+    const { lat, long } = req.body;
     const gettingsolidData=async()=>{
-        const data=await solidData();
+        const data=await solidData({lat,long});
         res.json(data);
     }
     gettingsolidData();
